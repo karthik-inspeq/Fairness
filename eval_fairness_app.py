@@ -157,7 +157,6 @@ def main():
                     st.session_state["data"]["Group"].unique().tolist(),
                     default=[]
                 )
-            st.session_state["fairness_score"] = fairness_score(st.session_state['filtered_data'], st.session_state["attribute"])
             submit_button = st.form_submit_button(label="Evaluate Fairness")
         
     if submit_button:
@@ -168,11 +167,12 @@ def main():
         attribute= st.session_state["attribute"], 
         previledged=st.session_state["privileged"], 
         unpreviledged=st.session_state["un_privileged"])
-        st.write(st.session_state['fairness_score'])
+        st.session_state["fairness_score"] = fairness_score(st.session_state['filtered_data'], st.session_state["attribute"])
     if st.session_state["excel"]:
         st.write(st.session_state["data"])
-    fairness_df, final_fairness = st.session_state["fairness_score"]
-    st.write(fairness_df)
-    st.write(f"Fairness Score is \n {final_fairness}")
+    if st.session_state["fairness_score"]:
+        fairness_df, final_fairness = st.session_state["fairness_score"]
+        st.write(fairness_df)
+        st.write(f"Fairness Score is \n {final_fairness}")
 if __name__ == "__main__":
     main()
