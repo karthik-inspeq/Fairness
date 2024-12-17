@@ -1,0 +1,4 @@
+streamlit
+inspeqai
+python-dotenv
+scikit-learn

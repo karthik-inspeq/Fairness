@@ -1,0 +1,13 @@
+Input,Output,Metric,Attribute,Group,True_label,Pred_label
+string,string,TOXICITY,Gender,Male,0.4,0.4
+string,string,TOXICITY,Gender ,Female,0.7,0.5
+string,string,TOXICITY,Race,Black,0.6,0.7
+string,string,TOXICITY,Race,White,0.4,0.3
+string,string,TOXICITY,Race,Asian,0.6,0.7
+string,string,FUZZY_SCORE,Gender,Male,0.4,0.4
+string,string,FUZZY_SCORE,Gender ,Female,0.7,0.5
+string,string,FUZZY_SCORE,Race,Black,0.6,0.7
+string,string,FUZZY_SCORE,Race,White,0.4,0.3
+string,string,ROUGE_SCORE,Race,Asian,0.6,0.7
+string,string,ROUGE_SCORE,Race,White,0.4,0.3
+string,string,ROUGE_SCORE,Race,Asian,0.6,0.7
