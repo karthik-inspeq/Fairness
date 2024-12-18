@@ -6,7 +6,7 @@ import math
 import pandas as pd
 
 
-def input_parser(threshold, data, attribute, previledged, unpreviledged, metric_name):
+def input_parser(threshold, data, attribute, previledged, unpreviledged, metric_name, percentage):
     """
     Parses input data and maps metric values to binary (0/1) based on the threshold.
     Dynamically filters based on the given attributes and privileged/unprivileged logic.
@@ -43,7 +43,12 @@ def input_parser(threshold, data, attribute, previledged, unpreviledged, metric_
 
     # Drop rows where 'Group_binary' is None (no match found)
     updated_data = updated_data.dropna(subset=["Group_binary"])
+    if not (0 < percentage <= 100):
+        raise ValueError("Percentage must be between 0 and 100")
 
+    # Randomly sample a percentage of the rows
+    fraction = percentage / 100.0  # Convert percentage to a fraction
+    updated_data = updated_data.sample(frac=fraction, random_state=42) 
     return updated_data
 
 # Defining Bias index
